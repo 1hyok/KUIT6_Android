@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,7 +34,7 @@ fun GetCouponItem(modifier: Modifier = Modifier) {
             text = "무료배달 + 총 10,000원 할인",
             modifier = modifier.padding(start = 5.dp),
             color = Color(color = 0xFFFDFFFF),
-            fontWeight = FontWeight.Medium,
+            fontWeight = FontWeight.Bold,
             fontSize = 12.sp
         )
 
@@ -42,8 +43,18 @@ fun GetCouponItem(modifier: Modifier = Modifier) {
             modifier = modifier.padding(start = 2.dp),
             color = Color(color = 0xFFFDFFFF),
             fontSize = 12.sp,
-            fontWeight = FontWeight.Normal
+//            fontWeight = FontWeight.Normal
         )
+
+        Button(
+            onClick = {},
+            modifier = modifier.padding(start = 44.dp),
+//            colors = TODO(),
+        ) {
+            Text(
+                text = "쿠폰 받기"
+            )
+        }
     }
 }
 
