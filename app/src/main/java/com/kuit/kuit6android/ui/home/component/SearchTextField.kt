@@ -1,7 +1,8 @@
 package com.kuit.kuit6android.ui.home.component
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kuit.kuit6android.R
 
@@ -24,37 +26,39 @@ fun SearchTextField(modifier: Modifier = Modifier) {
     var content by rememberSaveable() {
         mutableStateOf("")
     }
-    Column {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_search),
-                contentDescription = "search"
-            )
-            OutlinedTextField(
-                value = content,
-                onValueChange = {
-                    content = it
-                },
-                placeholder = {
-                    Text(
-                        text = "정일혁님, 요아정 어때요?",
-                        fontSize = 15.sp
-                    )
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = Color.Black,
-                    unfocusedTextColor = Color.Red,
-                    focusedBorderColor = Color.Blue,
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedPlaceholderColor = Color.Green,
-                    unfocusedPlaceholderColor = Color(color = 0xFF98A0AB),
-                    focusedContainerColor = Color.Yellow,
-                    unfocusedContainerColor = Color.Transparent
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            painter = painterResource(id = R.drawable.ic_search),
+            contentDescription = "search",
+            modifier = Modifier.size(20.dp)
+        )
+        OutlinedTextField(
+            modifier = Modifier
+                .fillMaxWidth(),
+            value = content,
+            onValueChange = {
+                content = it
+            },
+            placeholder = {
+                Text(
+                    text = "정일혁님, 요아정 어때요?",
+                    fontSize = 15.sp
                 )
+            },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = Color.Black,
+                unfocusedTextColor = Color.Red,
+                focusedBorderColor = Color.Blue,
+                unfocusedBorderColor = Color.Transparent,
+                focusedPlaceholderColor = Color.Green,
+                unfocusedPlaceholderColor = Color(color = 0xFF98A0AB),
+                focusedContainerColor = Color.Yellow,
+                unfocusedContainerColor = Color.Transparent
             )
-        }
+        )
     }
 }
 

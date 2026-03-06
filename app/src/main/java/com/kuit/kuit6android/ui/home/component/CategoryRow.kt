@@ -34,14 +34,21 @@ fun CategoryRow(modifier: Modifier = Modifier) {
             category = "분식"
         ),
     )
-    Row(verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(18.dp)) {
+//    Row(
+//        modifier = modifier.fillMaxWidth(),
+//        horizontalArrangement = Arrangement.Center
+//    ) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(18.dp)
+    ) {
         categoryList.forEach {
             CategoryItem(
                 categoryData = it
             )
         }
     }
+//    }
 }
 
 @Preview(showBackground = true)

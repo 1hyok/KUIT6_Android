@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -57,12 +58,13 @@ fun GetCouponItem(modifier: Modifier = Modifier) {
             text = "적용 가능",
             modifier = modifier.padding(
                 start = 2.dp,
-                end = 44.dp
             ),
             color = Color(color = 0xFFFDFFFF),
             fontSize = 12.sp,
 //            fontWeight = FontWeight.Normal
         )
+
+        Spacer(modifier = modifier.weight(1f))
 
         Button(
             onClick = {
@@ -72,7 +74,12 @@ fun GetCouponItem(modifier: Modifier = Modifier) {
                 .padding(
                     top = 8.dp,
                     bottom = 8.dp
-                ),
+                )
+                .size(
+                    width = 58.dp,
+                    height = 26.dp
+                )
+            ,
             shape = RoundedCornerShape(size = 4.dp),
             contentPadding = PaddingValues(
                 start = 8.dp,
@@ -89,6 +96,7 @@ fun GetCouponItem(modifier: Modifier = Modifier) {
                 text = "쿠폰 받기",
                 fontWeight = FontWeight.Bold,
                 fontSize = 11.sp,
+                lineHeight = 11.sp
             )
         }
     }
