@@ -17,6 +17,7 @@ import com.kuit.kuit6android.R
 @Composable
 fun AddressRow(modifier: Modifier = Modifier) {
     Row(
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
@@ -24,18 +25,18 @@ fun AddressRow(modifier: Modifier = Modifier) {
             contentDescription = "marker"
         )
 
-        Spacer(modifier = modifier.width(width = 12.dp))
+        Spacer(modifier = Modifier.width(width = 12.dp))
 
         Text(
             text = "서울시 광진구 구의동",
 
             )
-        Spacer(modifier = modifier.width(width = 9.dp))
+        Spacer(modifier = Modifier.width(width = 9.dp))
         Image(
             painter = painterResource(id = R.drawable.ic_dropdown_arrow),
             contentDescription = "dropdown_arrow"
         )
-        Spacer(modifier = modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(1f))
         Icon(
             painter = painterResource(id = R.drawable.ic_bell),
             contentDescription = "bell"

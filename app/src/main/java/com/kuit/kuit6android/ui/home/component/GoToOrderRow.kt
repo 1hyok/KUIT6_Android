@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -37,7 +36,7 @@ fun GoToOrderRow(modifier: Modifier = Modifier) {
             ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Spacer(modifier = modifier.weight(weight = 1f))
+        Spacer(modifier = Modifier.weight(weight = 0.7f))
         Column(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
@@ -54,10 +53,10 @@ fun GoToOrderRow(modifier: Modifier = Modifier) {
             )
         }
 
-        Spacer(modifier = modifier.width(width = 18.dp))
+        Spacer(modifier = Modifier.weight(weight = 0.3f))
 
         Button(
-            modifier = modifier.height(height = 25.dp),
+            modifier = Modifier.height(height = 25.dp),
             onClick = {
 
             },

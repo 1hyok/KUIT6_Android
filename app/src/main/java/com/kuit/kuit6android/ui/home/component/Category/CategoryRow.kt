@@ -1,12 +1,12 @@
-package com.kuit.kuit6android.ui.home.component
+package com.kuit.kuit6android.ui.home.component.Category
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.kuit.kuit6android.R
 import com.kuit.kuit6android.ui.home.data.CategoryData
 
@@ -34,13 +34,12 @@ fun CategoryRow(modifier: Modifier = Modifier) {
             category = "분식"
         ),
     )
-//    Row(
-//        modifier = modifier.fillMaxWidth(),
-//        horizontalArrangement = Arrangement.Center
 //    ) {
     Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = modifier
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(18.dp)
     ) {
         categoryList.forEach {
             CategoryItem(

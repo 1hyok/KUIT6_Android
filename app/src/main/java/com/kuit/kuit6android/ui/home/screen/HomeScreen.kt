@@ -12,19 +12,37 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.kuit.kuit6android.R
 import com.kuit.kuit6android.ui.home.component.AddressRow
-import com.kuit.kuit6android.ui.home.component.CategoryRow
+import com.kuit.kuit6android.ui.home.component.Category.CategoryRow
 import com.kuit.kuit6android.ui.home.component.GetCouponItem
 import com.kuit.kuit6android.ui.home.component.GoToOrderRow
 import com.kuit.kuit6android.ui.home.component.SearchTextField
+import com.kuit.kuit6android.ui.home.component.restaurant.RecentRestaurant
+import com.kuit.kuit6android.ui.home.data.restaurant.RecentRestaurantData
+import com.kuit.kuit6android.ui.home.data.restaurant.RestaurantRatingData
 
 @Composable
 fun HomeScreen(
-    padding: PaddingValues,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    padding: PaddingValues
 ) {
+    val restaurantDataList = listOf(
+        RecentRestaurantData(
+            imageId = R.drawable.img_mosu,
+            name = "모수",
+            time = 30,
+            ratingData = RestaurantRatingData(4.5f, 100)
+        ),
+        RecentRestaurantData(
+            imageId = R.drawable.img_pork_cutlet,
+            name = "돈까스",
+            time = 20,
+            ratingData = RestaurantRatingData(4.8f, 50)
+        )
+    )
     LazyColumn(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(
                 padding
@@ -33,20 +51,33 @@ fun HomeScreen(
     ) {
         item {
             GetCouponItem()
-            Spacer(modifier = modifier.height(height = 20.dp))
+            Spacer(modifier = Modifier.height(height = 20.dp))
+            AddressRow(modifier = Modifier.padding(horizontal = 27.dp))
+            SearchTextField(
+                modifier = Modifier.padding(horizontal = 49.dp)
+            )
             Column(
-                modifier = modifier.padding(horizontal = 27.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(
+                    horizontal = 27.dp
+                )
             ) {
-                AddressRow()
-                SearchTextField(
-                    modifier = modifier.padding(horizontal = 22.dp)
+                CategoryRow()
+                Spacer(
+                    modifier = Modifier
+                        .height(height = 14.dp)
                 )
                 CategoryRow()
-                Spacer(modifier = modifier.height(height = 14.dp))
-                CategoryRow()
-                Spacer(modifier = modifier.height(height = 14.dp))
+                Spacer(
+                    modifier = Modifier
+                        .height(height = 14.dp)
+                )
                 GoToOrderRow()
+                Spacer(
+                    modifier = Modifier
+                        .height(height = 24.dp)
+                )
+                RecentRestaurant(restaurantDataList = restaurantDataList)
             }
         }
     }

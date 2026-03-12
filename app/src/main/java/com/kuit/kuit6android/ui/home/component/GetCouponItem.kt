@@ -78,8 +78,7 @@ fun GetCouponItem(modifier: Modifier = Modifier) {
                 .size(
                     width = 58.dp,
                     height = 26.dp
-                )
-            ,
+                ),
             shape = RoundedCornerShape(size = 4.dp),
             contentPadding = PaddingValues(
                 start = 8.dp,
