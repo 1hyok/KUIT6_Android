@@ -12,11 +12,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.kuit.kuit6android.ui.home.component.AddressRow
-import com.kuit.kuit6android.ui.home.component.Category.CategoryRow
-import com.kuit.kuit6android.ui.home.component.GetCouponItem
-import com.kuit.kuit6android.ui.home.component.GoToOrderRow
-import com.kuit.kuit6android.ui.home.component.SearchTextField
+import com.kuit.kuit6android.ui.home.components.AddressRow
+import com.kuit.kuit6android.ui.home.components.Category.CategoryRow
+import com.kuit.kuit6android.ui.home.components.GetCouponItem
+import com.kuit.kuit6android.ui.home.components.GoToOrderRow
+import com.kuit.kuit6android.ui.home.components.SearchTextField
 import com.kuit.kuit6android.ui.restaurant.RecentRestaurant
 import com.kuit.kuit6android.ui.restaurant.RestaurantSamples
 

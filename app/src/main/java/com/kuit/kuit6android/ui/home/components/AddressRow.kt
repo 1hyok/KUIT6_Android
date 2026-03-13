@@ -1,4 +1,4 @@
-package com.kuit.kuit6android.ui.home.component
+package com.kuit.kuit6android.ui.home.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row

@@ -1,4 +1,4 @@
-package com.kuit.kuit6android.ui.home.component
+package com.kuit.kuit6android.ui.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

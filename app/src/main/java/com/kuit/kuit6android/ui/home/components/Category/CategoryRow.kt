@@ -1,4 +1,4 @@
-package com.kuit.kuit6android.ui.home.component.Category
+package com.kuit.kuit6android.ui.home.components.Category
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

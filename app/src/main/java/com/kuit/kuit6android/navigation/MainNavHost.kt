@@ -109,7 +109,8 @@ fun MainNavHost(
                                 rating = favoriteDetailRoute.rating,
                                 raters = favoriteDetailRoute.raters
                             )
-                        )
+                        ),
+                        onNavigateToBack = {navController.navigateUp()}
                     )
                 }
             }
