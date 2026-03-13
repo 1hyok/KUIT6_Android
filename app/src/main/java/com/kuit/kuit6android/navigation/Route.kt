@@ -7,13 +7,25 @@ sealed interface Route {
     data object Home : Route
 
     @Serializable
+    data object SearchNestedGraphRoute : Route
+
+    @Serializable
     data object Search : Route
+
+    @Serializable
+    data class SearchResult(
+        val searchKeyword: String
+    ) : Route
+
 
     @Serializable
     data object Favorite : Route
 
     @Serializable
     data object OrderHistory : Route
+
+    @Serializable
+    data object MyEatsNestedGraphRoute : Route
 
     @Serializable
     data object MyEats : Route

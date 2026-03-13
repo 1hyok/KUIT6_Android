@@ -5,16 +5,19 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
+import androidx.navigation.toRoute
 import com.kuit.kuit6android.ui.favorite.screen.FavoriteScreen
 import com.kuit.kuit6android.ui.home.screen.HomeScreen
 import com.kuit.kuit6android.ui.myeats.screen.MyEatsScreen
 import com.kuit.kuit6android.ui.orderhistory.screen.OrderHistoryScreen
+import com.kuit.kuit6android.ui.search.screen.SearchResultScreen
 import com.kuit.kuit6android.ui.search.screen.SearchScreen
 
 @Composable
 fun MainNavHost(
     padding: PaddingValues,
-    navController: NavHostController,
+    navController: NavHostController
 ) {
     NavHost(
         navController = navController,
@@ -22,27 +25,54 @@ fun MainNavHost(
     ) {
         composable<Route.Home> {
             HomeScreen(
-                padding = padding,
+                padding = padding
             )
         }
-        composable<Route.Search> {
-            SearchScreen(
-                padding = padding,
+
+        navigation<Route.SearchNestedGraphRoute>(startDestination = Route.Search) {
+            composable<Route.Search> {
+                SearchScreen(
+                    padding = padding,
+                    onNavigateToResult = {
+                        navController.navigate(Route.SearchResult(searchKeyword = it))
+                    }
+                )
+            }
+//            composable<Route.SearchResult> { backStackEntry ->
+//                val searchKeyword = backStackEntry.toRoute<Route.SearchResult>().searchKeyword
+//                SearchResultScreen(
+//                    searchKeyword = searchKeyword,
+//                    padding = padding
+//                )
+//            }
+        }
+        composable<Route.SearchResult> { backStackEntry ->
+            val searchKeyword = backStackEntry.toRoute<Route.SearchResult>().searchKeyword
+            SearchResultScreen(
+                searchKeyword = searchKeyword,
+                padding = padding
             )
         }
-        composable<Route.Favorite> {
-            FavoriteScreen(
-                padding = padding,
-            )
+
+        navigation<Route.MyEatsNestedGraphRoute>(startDestination = Route.MyEats) {
+            composable<Route.MyEats> {
+                MyEatsScreen(
+                    padding = padding,
+                    onNavigateToFavorite = {
+                        navController.navigate(Route.Favorite)
+                    }
+                )
+            }
+            composable<Route.Favorite> {
+                FavoriteScreen(
+                    padding = padding
+                )
+            }
         }
+
         composable<Route.OrderHistory> {
             OrderHistoryScreen(
-                padding = padding,
-            )
-        }
-        composable<Route.MyEats> {
-            MyEatsScreen(
-                padding = padding,
+                padding = padding
             )
         }
     }
