@@ -1,9 +1,11 @@
-package com.kuit.kuit6android.ui.home.component.restaurant
+package com.kuit.kuit6android.ui.restaurant
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
@@ -32,12 +34,16 @@ fun RecentRestaurant(
         )
         Spacer(modifier = Modifier.height(height = 25.dp))
         LazyRow(
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.spacedBy(22.dp)
         ) {
             items(restaurantDataList) { restaurantData ->
-                RecentRestaurantItem(
-                    restaurantData = restaurantData
-                )
+                Box(
+                    modifier = Modifier.width(230.dp)
+                ) {
+                    RestaurantItem(
+                        restaurantData = restaurantData
+                    )
+                }
             }
         }
     }

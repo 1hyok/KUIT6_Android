@@ -12,35 +12,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.kuit.kuit6android.R
 import com.kuit.kuit6android.ui.home.component.AddressRow
 import com.kuit.kuit6android.ui.home.component.Category.CategoryRow
 import com.kuit.kuit6android.ui.home.component.GetCouponItem
 import com.kuit.kuit6android.ui.home.component.GoToOrderRow
 import com.kuit.kuit6android.ui.home.component.SearchTextField
-import com.kuit.kuit6android.ui.home.component.restaurant.RecentRestaurant
-import com.kuit.kuit6android.ui.home.data.restaurant.RecentRestaurantData
-import com.kuit.kuit6android.ui.home.data.restaurant.RestaurantRatingData
+import com.kuit.kuit6android.ui.restaurant.RecentRestaurant
+import com.kuit.kuit6android.ui.restaurant.RestaurantSamples
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
     padding: PaddingValues
 ) {
-    val restaurantDataList = listOf(
-        RecentRestaurantData(
-            imageId = R.drawable.img_mosu,
-            name = "모수",
-            time = 30,
-            ratingData = RestaurantRatingData(4.5f, 100)
-        ),
-        RecentRestaurantData(
-            imageId = R.drawable.img_pork_cutlet,
-            name = "돈까스",
-            time = 20,
-            ratingData = RestaurantRatingData(4.8f, 50)
-        )
-    )
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
@@ -77,7 +61,7 @@ fun HomeScreen(
                     modifier = Modifier
                         .height(height = 24.dp)
                 )
-                RecentRestaurant(restaurantDataList = restaurantDataList)
+                RecentRestaurant(restaurantDataList = RestaurantSamples.restaurantDataList)
             }
         }
     }
