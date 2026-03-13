@@ -1,38 +1,42 @@
 package com.kuit.kuit6android.ui.restaurant
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kuit.kuit6android.R
-import com.kuit.kuit6android.ui.home.data.restaurant.RecentRestaurantData
-import com.kuit.kuit6android.ui.home.data.restaurant.RestaurantRatingData
+import com.kuit.kuit6android.ui.home.data.restaurant.RestaurantData
 
 @Composable
 fun RestaurantItem(
     modifier: Modifier = Modifier,
-    restaurantData: RecentRestaurantData,
-    isRecent: Boolean = true
+    restaurantData: RestaurantData,
+    isRecent: Boolean = true,
+    onNavigateToRestaurantDetail: (RestaurantData) -> Unit
 ) {
     Column(
 //        modifier = modifier.width(IntrinsicSize.Max)
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(onClick = { onNavigateToRestaurantDetail(restaurantData) })
     ) {
         Image(
             painter = painterResource(id = restaurantData.imageId),
@@ -64,10 +68,16 @@ fun RestaurantItem(
             )
         }
         Spacer(modifier = Modifier.height(height = 10.dp))
-        Row {
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.img_star),
-                contentDescription = "star"
+                contentDescription = "star",
+                modifier = Modifier.size(
+                    width = 20.dp,
+                    height = 15.dp
+                )
             )
             Spacer(
                 modifier = Modifier.width(width = if (isRecent) 5.dp else 10.dp)
@@ -75,21 +85,9 @@ fun RestaurantItem(
             Text(
                 text = "${restaurantData.ratingData.rating} (${restaurantData.ratingData.raters})",
                 color = Color(color = 0xFC575252),
-                fontWeight = FontWeight.Normal
+                fontWeight = FontWeight.Normal,
+                fontSize = 12.sp
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun RestaurantItemPreview() {
-    RestaurantItem(
-        restaurantData = RecentRestaurantData(
-            imageId = R.drawable.img_mosu,
-            name = "모수",
-            time = 30,
-            ratingData = RestaurantRatingData(4.5f, 100)
-        )
-    )
 }

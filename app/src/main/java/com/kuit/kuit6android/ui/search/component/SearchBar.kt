@@ -1,6 +1,7 @@
 package com.kuit.kuit6android.ui.search.component
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kuit.kuit6android.R
@@ -23,10 +23,11 @@ import com.kuit.kuit6android.R
 @Composable
 fun SearchBar(
     modifier: Modifier = Modifier,
-    text: String = ""
+    text: String = "",
+    onNavigateToBack: () -> Unit
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -34,6 +35,9 @@ fun SearchBar(
             painter = painterResource(id = R.drawable.ic_search_back),
             contentDescription = "back",
             modifier = Modifier.size(24.dp)
+                .clickable(
+                    onClick = onNavigateToBack
+                )
         )
         Row(
             modifier = Modifier
@@ -63,10 +67,4 @@ fun SearchBar(
             modifier = Modifier.size(24.dp)
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun SearchBarPreview() {
-    SearchBar(text = "검색어를 입력해 주세요")
 }

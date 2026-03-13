@@ -24,7 +24,8 @@ import com.kuit.kuit6android.ui.search.component.SearchBar
 fun SearchScreen(
     padding: PaddingValues,
     modifier: Modifier = Modifier,
-    onNavigateToResult: (String) -> Unit
+    onNavigateToResult: (String) -> Unit,
+    onNavigateToBack: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -37,7 +38,10 @@ fun SearchScreen(
                 end = 20.dp
             )
     ) {
-        SearchBar(text = "검색어를 입력해 주세요")
+        SearchBar(
+            text = "검색어를 입력해 주세요",
+            onNavigateToBack = onNavigateToBack
+        )
         Spacer(modifier = Modifier.height(35.dp))
         Column {
             Row(
@@ -88,11 +92,3 @@ fun SearchScreen(
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//private fun SearchScreenPreview() {
-//    SearchScreen(
-//        padding = PaddingValues()
-//    )
-//}

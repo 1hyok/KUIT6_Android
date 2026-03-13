@@ -1,6 +1,9 @@
 package com.kuit.kuit6android.ui.home.data.restaurant
 
-data class RecentRestaurantData(
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class RestaurantData(
     val imageId: Int,
     val name: String,
     val time: Int,

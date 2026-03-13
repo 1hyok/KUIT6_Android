@@ -16,13 +16,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kuit.kuit6android.R
-import com.kuit.kuit6android.ui.home.data.restaurant.RecentRestaurantData
+import com.kuit.kuit6android.ui.home.data.restaurant.RestaurantData
 import com.kuit.kuit6android.ui.home.data.restaurant.RestaurantRatingData
 
 @Composable
 fun RecentRestaurant(
     modifier: Modifier = Modifier,
-    restaurantDataList: List<RecentRestaurantData>
+    restaurantDataList: List<RestaurantData>
 ) {
     Column(
         modifier = modifier
@@ -41,7 +41,8 @@ fun RecentRestaurant(
                     modifier = Modifier.width(230.dp)
                 ) {
                     RestaurantItem(
-                        restaurantData = restaurantData
+                        restaurantData = restaurantData,
+                        onNavigateToRestaurantDetail = {}
                     )
                 }
             }
@@ -54,13 +55,13 @@ fun RecentRestaurant(
 private fun RecentRestaurantPreview() {
     RecentRestaurant(
         restaurantDataList = listOf(
-            RecentRestaurantData(
+            RestaurantData(
                 imageId = R.drawable.img_mosu,
                 name = "모수",
                 time = 30,
                 ratingData = RestaurantRatingData(4.5f, 100)
             ),
-            RecentRestaurantData(
+            RestaurantData(
                 imageId = R.drawable.img_pork_cutlet,
                 name = "돈까스",
                 time = 20,

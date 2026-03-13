@@ -27,41 +27,43 @@ fun BottomNavBar(
     currentTab: NavTab?,
     onItemSelected: (NavTab) -> Unit,
 ) {
-    Box(modifier = Modifier.background(Color.White)) {
-        Column {
-            HorizontalDivider(color = Color.LightGray)
-            Row(
-                modifier = Modifier
-                    .padding(horizontal = 20.dp, vertical = 14.dp)
-                    .navigationBarsPadding()
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                tabs.forEach { tab ->
-                    Column(
-                        modifier = Modifier
-                            .weight(1f)
-                            .clickable(indication = null, interactionSource = null) {
-                                onItemSelected(tab)
-                            },
-                        verticalArrangement = Arrangement.spacedBy(3.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Icon(
-                            painter = painterResource(id = tab.icon),
-                            contentDescription = tab.label,
-                            tint = if (tab == currentTab)
-                                Color.Black
-                            else Color(0xff939DA9)
-                        )
-                        Text(
-                            tab.label,
-                            fontSize = 13.sp,
-                            color = if (tab == currentTab)
-                                Color.Black
-                            else Color(0xff939DA9)
-                        )
+    if (visible) {
+        Box(modifier = Modifier.background(Color.White)) {
+            Column {
+                HorizontalDivider(color = Color.LightGray)
+                Row(
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp, vertical = 14.dp)
+                        .navigationBarsPadding()
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    tabs.forEach { tab ->
+                        Column(
+                            modifier = Modifier
+                                .weight(1f)
+                                .clickable(indication = null, interactionSource = null) {
+                                    onItemSelected(tab)
+                                },
+                            verticalArrangement = Arrangement.spacedBy(3.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            Icon(
+                                painter = painterResource(id = tab.icon),
+                                contentDescription = tab.label,
+                                tint = if (tab == currentTab)
+                                    Color.Black
+                                else Color(0xff939DA9)
+                            )
+                            Text(
+                                tab.label,
+                                fontSize = 13.sp,
+                                color = if (tab == currentTab)
+                                    Color.Black
+                                else Color(0xff939DA9)
+                            )
+                        }
                     }
                 }
             }

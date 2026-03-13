@@ -30,6 +30,7 @@ class MainActivity : ComponentActivity() {
                     navController.currentBackStackEntryAsState().value?.destination
                 val currentTab =
                     NavTab.entries.find { currentDestination?.hasRoute(route = it.route::class) == true }
+                val bottomBarVisible = currentTab != NavTab.FAVORITE
 
                 Scaffold(
                     containerColor = Color.White,
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     bottomBar = {
 
                         BottomNavBar(
-                            visible = true,
+                            visible = bottomBarVisible,
                             tabs = NavTab.entries,
                             currentTab = currentTab,
                             onItemSelected = { tab ->

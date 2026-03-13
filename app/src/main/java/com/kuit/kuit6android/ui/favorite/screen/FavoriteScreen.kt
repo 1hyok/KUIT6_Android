@@ -1,6 +1,7 @@
 package com.kuit.kuit6android.ui.favorite.screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,17 +24,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kuit.kuit6android.R
+import com.kuit.kuit6android.ui.home.data.restaurant.RestaurantData
 import com.kuit.kuit6android.ui.restaurant.RestaurantItem
-import com.kuit.kuit6android.ui.restaurant.RestaurantSamples
 
 @Composable
 fun FavoriteScreen(
     padding: PaddingValues,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    restaurantDataList: List<RestaurantData>,
+    onNavigateToBack: () -> Unit,
+    onNavigateToRestaurantDetail: (RestaurantData) -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize()
@@ -56,7 +59,11 @@ fun FavoriteScreen(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_favorite_back),
                     contentDescription = "favorite back",
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clickable(
+                            onClick = onNavigateToBack
+                        )
                 )
                 Spacer(Modifier.width(27.dp))
                 Text(
@@ -74,7 +81,7 @@ fun FavoriteScreen(
             }
             Spacer(Modifier.height(58.dp))
             Text(
-                text = "총 0개",
+                text = "총 ${restaurantDataList.size}개",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Normal
             )
@@ -93,22 +100,15 @@ fun FavoriteScreen(
                 .padding(horizontal = 27.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            items(RestaurantSamples.restaurantDataList) { restaurantData ->
+            items(restaurantDataList) { restaurantData ->
                 Box {
                     RestaurantItem(
                         restaurantData = restaurantData,
-                        isRecent = false
+                        isRecent = false,
+                        onNavigateToRestaurantDetail = onNavigateToRestaurantDetail
                     )
                 }
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun FavoriteScreenPreview() {
-    FavoriteScreen(
-        padding = PaddingValues()
-    )
 }
